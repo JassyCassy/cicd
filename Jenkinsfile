@@ -6,7 +6,8 @@ metadata:
     some-label: some-label-value
 spec:
   containers:
-  - image: busybox
+  - name: jenkins-slave
+    image: mshaibek/jenkins-slave-312
     command:
     - cat
     tty: true
@@ -23,8 +24,25 @@ spec:
 """
 ) {
     node(POD_LABEL) {
-      container('busybox') {
-        sh "hostname ; sleep 180"
+      properties([
+        pipelineTriggers([
+          [$class: 'GitHubPushTrigger'],
+          ])
+      ])
+      checkout scm
+      container('jenkins-slave') {
+        sh ''' 
+        export AWS_DEFAULT_REGION=us-east-1
+        cd api/
+        make build
+        make push
+        make deploy
+        cd ..
+        cd web/
+        make build
+        make push
+        make deploy
+        '''
       }
     }
 }
