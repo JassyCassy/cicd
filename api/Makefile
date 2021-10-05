@@ -10,7 +10,7 @@ push: login
 	@docker push $(account).$(target)/$(repo):$(version)
 
 login:
-	@aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $(account).$(target)/$(repo)
+	@aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $(account).$(target)
 
 deploy:
 	@kubectl apply -f kubernetes/deployment-svc-api.yaml
