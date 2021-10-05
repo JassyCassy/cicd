@@ -36,13 +36,11 @@ spec:
         cd api/
         make build
         make push
-        make login
         make deploy
         cd ..
         cd web/
         make build
         make push
-        make login
         make deploy
         '''
       }
