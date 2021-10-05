@@ -1,7 +1,7 @@
 version = latest
 account = $(shell aws sts get-caller-identity --query "Account" --output text)
 repo = apiapp
-target = dkr.ecr.us-east-1.amazonaws.com
+target = dkr.ecr.us-east-1.amazonaws.com/apiapp
 
 build:
 	@docker build -t $(account).$(target)/$(repo):$(version) .
