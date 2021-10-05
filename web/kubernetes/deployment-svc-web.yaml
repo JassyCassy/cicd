@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: web-container
-        image: $(account).$(target)/webapp:latest
+        image: 028615413248.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
         ports:
         - containerPort: 3000
 ---

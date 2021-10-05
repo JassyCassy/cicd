@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: api-container
-        image: $(account).$(target)/apiapp:latest
+        image: 028615413248.dkr.ecr.us-east-1.amazonaws.com/apiapp:latest
         ports:
         - containerPort: 3000
 ---
