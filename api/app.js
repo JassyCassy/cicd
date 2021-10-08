@@ -12,7 +12,7 @@ app.get('/api/status', function(req, res) {
       return res.status(500).send('error fetching client from pool');
     }
     client.query('SELECT now() as time', [], function(err, result) {
-      //call `done()` to release the client back to the pool
+      //call `done()` to release the client back to pool
       done();
 
       if(err) {
