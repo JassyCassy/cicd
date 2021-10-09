@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-deployment
+  namespace: NAMESPACE
   labels:
     app: api-tier
 spec:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
       - name: api-container
-        image: 028615413248.dkr.ecr.us-east-1.amazonaws.com/apiapp:latest
+        image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/apiapp:IMAGEVERSION
         ports:
         - containerPort: 3000
 ---
@@ -24,6 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: api-service
+  namespace: NAMESPACE
 spec:
   selector:
     app: api-tier

@@ -13,4 +13,5 @@ login:
 	@aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $(account).$(target)
 
 deploy:
+	@cat kubernetes/deployment-svc-api.yaml | sed "s/IMAGEVERSION/$(version)/g;s/ACCOUNT/$(account)/g" | kubectl apply -f -
 	@kubectl apply -f kubernetes/deployment-svc-api.yaml
