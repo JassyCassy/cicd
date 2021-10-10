@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-deployment
-  namespace: NAMESPACE
+  namespace: name
   labels:
     app: web-tier
 spec:
@@ -25,7 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-service
-  namespace: NAMESPACE
+  namespace: name
 spec:
   selector:
     app: web-tier
